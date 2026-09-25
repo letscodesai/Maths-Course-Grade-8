@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maths Course — Grade 8</title>
+<meta name="description" content="Practice pages for the Grade 8 Maths course, organised by folder.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&family=Patrick+Hand&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#f2f4fb;
+    --paper:#ffffff;
+    --line:#d9dfef;
+    --ink:#1d2433;
+    --soft:#5b6478;
+    --faint:#8b93a8;
+    --acc:#2f5bd8;
+    --acc-soft:#e7ecfc;
+    --amber:#e8a90d;
+    --amber-soft:#fbf0d4;
+    --coral:#e5573f;
+    --coral-soft:#fbe4df;
+    --grid-line: rgba(90,105,150,0.10);
+    --display:"Poppins",system-ui,sans-serif;
+    --body:"Inter",system-ui,sans-serif;
+    --mono:"JetBrains Mono","Courier New",monospace;
+    --hand:"Patrick Hand",cursive;
+    --maxw:980px;
+    --radius:14px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size:40px 40px; background-position:-1px -1px;
+  }
+  a{color:var(--acc)}
+  h1,h2,h3{font-family:var(--display);margin:0;color:var(--ink)}
+  p{margin:0}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+  .accent-bar{height:5px;background:linear-gradient(90deg,var(--acc),var(--amber),var(--coral))}
+
+  .topbar{max-width:var(--maxw);margin:0 auto;padding:20px 22px 0;display:flex;align-items:center;justify-content:space-between}
+  .brand{font-family:var(--display);font-weight:700;font-size:15px;display:flex;align-items:center;gap:8px}
+  .brand .dot{width:9px;height:9px;border-radius:50%;background:var(--acc)}
+
+  .hero{max-width:var(--maxw);margin:0 auto;padding:48px 22px 20px;display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center}
+  .hero .eyebrow{font-family:var(--mono);font-size:12.5px;color:var(--faint);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px}
+  .hero h1{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:700;margin-bottom:14px}
+  .hero h1 .accent{color:var(--acc)}
+  .hero .lede{color:var(--soft);max-width:52ch}
+
+  .notebook{background:#fffdf8;border-radius:var(--radius);border:1px solid var(--line);position:relative;
+    padding:22px 24px 22px 50px;overflow:hidden;
+    box-shadow:0 18px 40px -22px rgba(30,40,70,.25);
+    background-image:repeating-linear-gradient(#fffdf8 0 33px, #dfe6f5 33px 34px);
+  }
+  .notebook::before{content:"";position:absolute;left:32px;top:0;bottom:0;width:2px;background:var(--coral);opacity:.55}
+  .notebook-label{font-family:var(--mono);font-size:11px;color:var(--faint);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
+  .notebook-body{font-family:var(--hand);font-size:22px;color:#2b3550;min-height:150px}
+  .notebook-body .ln{margin-bottom:6px;opacity:0;animation:fadeIn .4s ease forwards}
+  .notebook-body .step{color:#2b3550}
+  .notebook-body .ans{display:inline-block;color:var(--acc);font-weight:600;padding:1px 10px;border:2px solid var(--acc);border-radius:8px}
+  @keyframes fadeIn{to{opacity:1}}
+
+  .section{padding:16px 0 60px}
+  .tab-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:26px;border-bottom:1px solid var(--line)}
+  .tab-btn{font-family:var(--display);font-weight:600;font-size:15px;background:none;border:none;cursor:pointer;
+    color:var(--faint);padding:10px 4px 12px;border-bottom:3px solid transparent;margin-bottom:-1px}
+  .tab-btn.active{color:var(--ink);border-bottom-color:var(--acc)}
+  .tab-btn .count{font-family:var(--mono);font-size:11.5px;color:var(--faint);margin-left:5px}
+  .tab-panel[hidden]{display:none}
+
+  .item-grid{display:grid;gap:12px}
+  .item-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:20px;
+    display:grid;grid-template-columns:50px 1fr auto;gap:16px;align-items:center;text-decoration:none;color:inherit}
+  .item-card:hover{border-color:var(--acc)}
+  .item-card .num{font-family:var(--display);font-weight:700;color:var(--acc);background:var(--acc-soft);
+    width:46px;height:46px;border-radius:11px;display:flex;align-items:center;justify-content:center}
+  .item-card h3{font-size:1.05rem;margin-bottom:5px}
+  .item-card p{font-size:.92rem;color:var(--soft)}
+  .item-card .arrow{font-family:var(--display);font-weight:600;font-size:13px;color:var(--acc);white-space:nowrap}
+
+  .empty-state{background:var(--paper);border:1.5px dashed var(--line);border-radius:var(--radius);padding:38px 24px;text-align:center}
+  .empty-state h3{font-size:1.05rem;color:var(--soft);margin-bottom:6px}
+  .empty-state p{color:var(--faint)}
+
+  footer{padding:34px 0 50px;text-align:center;border-top:1px solid var(--line)}
+  footer .brand{justify-content:center}
+  footer p{color:var(--faint);font-size:13px;margin-top:6px}
+  footer .credit{margin-top:14px;padding-top:12px;border-top:1px solid var(--line);font-family:var(--mono);font-size:12px;color:var(--faint)}
+  footer .credit strong{font-family:var(--display);color:var(--acc);font-weight:700}
+
+  @media (max-width:760px){
+    .hero{grid-template-columns:1fr;padding-top:32px}
+    .item-card{grid-template-columns:40px 1fr}
+    .item-card .arrow{display:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="accent-bar"></div>
+<div class="topbar">
+  <div class="brand"><span class="dot"></span> Maths Course — Grade 8</div>
+</div>
+
+<header class="hero">
+  <div>
+    <div class="eyebrow">Grade 8 Mathematics</div>
+    <h1>Practice pages for <span class="accent">Grade 8 Maths.</span></h1>
+    <p class="lede">This course is organised by topic and folder. Every practice page listed below is added automatically as soon as it's placed in the repository — nothing here needs to be updated by hand.</p>
+  </div>
+  <div class="notebook">
+    <div class="notebook-label">Worked example</div>
+    <div class="notebook-body" id="boardBody"></div>
+  </div>
+</header>
+
+<main>
+<section class="section">
+  <div class="wrap">
+    <div class="tab-row" id="tabRow" role="tablist"></div>
+    <div id="panelHost"></div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="brand"><span class="dot"></span> Maths Course — Grade 8</div>
+    <p>Practice pages for the Grade 8 Maths course.</p>
+    <p class="credit">A <strong>CodeCraft Club</strong> initiative</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ============ CONFIG ============ */
+  var GITHUB_OWNER  = "letscodesai";
+  var GITHUB_REPO   = "Maths-Course-Grade-8";
+  var GITHUB_BRANCH = "main";
+  var API_BASE      = "https://api.github.com/repos/" + GITHUB_OWNER + "/" + GITHUB_REPO + "/contents/";
+  var CACHE_TTL     = 5 * 60 * 1000;
+
+  /* Folders to hide even if present at the repo root */
+  var IGNORE_DIRS = ["assets", "images", "img", ".github"];
+  /* Preferred order + icon for known folders; anything else is appended alphabetically with a default icon */
+  var FOLDER_ORDER = ["Notes", "Quizzes"];
+  var FOLDER_ICON  = { Notes: "📘", Quizzes: "📝" };
+  var DEFAULT_ICON = "📁";
+
+  /* ============ helpers ============ */
+  function humanize(name){
+    return name.replace(/\.html?$/i, "").replace(/[-_]+/g, " ").trim()
+      .replace(/\b\w/g, function(c){ return c.toUpperCase(); });
+  }
+  function numberOf(filename, i){
+    var m = filename.match(/(\d+)/);
+    return m ? m[1].padStart(2, "0") : String(i + 1).padStart(2, "0");
+  }
+  function sortKeyOf(filename){
+    var m = filename.match(/(\d+)/);
+    return m ? parseInt(m[1], 10) : 9999;
+  }
+
+  function fetchDirs(){
+    return fetch(API_BASE + "?ref=" + GITHUB_BRANCH, { headers:{ Accept:"application/vnd.github+json" } })
+      .then(function(res){ return res.ok ? res.json() : []; })
+      .then(function(data){
+        if(!Array.isArray(data)) return [];
+        return data.filter(function(f){
+          return f.type === "dir" && IGNORE_DIRS.indexOf(f.name) === -1;
+        }).map(function(f){ return f.name; });
+      })
+      .catch(function(){ return []; });
+  }
+
+  function fetchFiles(path){
+    var url = API_BASE + encodeURIComponent(path) + "?ref=" + GITHUB_BRANCH;
+    return fetch(url, { headers:{ Accept:"application/vnd.github+json" } })
+      .then(function(res){
+        if(res.status === 404) return [];
+        if(!res.ok) return null;
+        return res.json();
+      })
+      .then(function(data){
+        if(!Array.isArray(data)) return data === null ? null : [];
+        return data.filter(function(f){
+          return f.type === "file" && /\.html?$/i.test(f.name) && f.name.toLowerCase() !== "index.html";
+        });
+      })
+      .catch(function(){ return null; });
+  }
+
+  function fetchMeta(file){
+    return fetch(file.download_url).then(function(res){ return res.ok ? res.text() : ""; })
+      .then(function(html){
+        var title = humanize(file.name), description = "";
+        if(html){
+          var doc = new DOMParser().parseFromString(html, "text/html");
+          var t = doc.querySelector("title");
+          var d = doc.querySelector('meta[name="description"]');
+          if(t && t.textContent.trim()) title = t.textContent.trim();
+          if(d && d.getAttribute("content")) description = d.getAttribute("content").trim();
+        }
+        return { title: title, description: description };
+      })
+      .catch(function(){ return { title: humanize(file.name), description: "" }; });
+  }
+
+  function buildItems(path, files){
+    return Promise.all(files.map(function(file, i){
+      return fetchMeta(file).then(function(meta){
+        return {
+          num: numberOf(file.name, i),
+          sortKey: sortKeyOf(file.name),
+          title: meta.title,
+          description: meta.description || "Open this page to see what it covers.",
+          href: path + "/" + file.name
+        };
+      });
+    })).then(function(items){
+      items.sort(function(a,b){ return a.sortKey - b.sortKey; });
+      return items;
+    });
+  }
+
+  function orderFolders(names){
+    var known = FOLDER_ORDER.filter(function(n){ return names.indexOf(n) !== -1; });
+    var rest = names.filter(function(n){ return FOLDER_ORDER.indexOf(n) === -1; }).sort();
+    return known.concat(rest);
+  }
+
+  /* ============ cache ============ */
+  function cacheKey(folder){ return "mathsCourseCache_v1_" + folder; }
+  function readCache(folder){
+    try{
+      var raw = localStorage.getItem(cacheKey(folder));
+      if(!raw) return null;
+      var p = JSON.parse(raw);
+      if(Date.now() - p.timestamp > CACHE_TTL) return null;
+      return p.items;
+    }catch(e){ return null; }
+  }
+  function writeCache(folder, items){
+    try{ if(items && items.length) localStorage.setItem(cacheKey(folder), JSON.stringify({ timestamp: Date.now(), items: items })); }
+    catch(e){}
+  }
+
+  /* ============ rendering ============ */
+  var tabRow = document.getElementById("tabRow");
+  var panelHost = document.getElementById("panelHost");
+
+  function renderGrid(container, items, ok){
+    if(!ok){
+      container.innerHTML = '<div class="empty-state"><h3>Couldn\'t load this folder</h3><p>The page couldn\'t reach GitHub just now. Refresh, or check the repository is public.</p></div>';
+      return;
+    }
+    if(!items.length){
+      container.innerHTML = '<div class="empty-state"><h3>Coming soon…</h3><p>Pages placed in this folder will appear here automatically.</p></div>';
+      return;
+    }
+    container.innerHTML = "";
+    items.forEach(function(it){
+      var a = document.createElement("a");
+      a.className = "item-card";
+      a.href = it.href;
+      a.innerHTML =
+        '<div class="num">' + it.num + '</div>' +
+        '<div><h3>' + it.title + '</h3><p>' + it.description + '</p></div>' +
+        '<div class="arrow">Open →</div>';
+      container.appendChild(a);
+    });
+  }
+
+  function showTab(folder, folders){
+    folders.forEach(function(f){
+      document.getElementById("tabBtn-" + f).classList.toggle("active", f === folder);
+      document.getElementById("panel-" + f).hidden = (f !== folder);
+    });
+  }
+
+  function init(){
+    fetchDirs().then(function(dirs){
+      var folders = orderFolders(dirs);
+      if(!folders.length){
+        panelHost.innerHTML = '<div class="empty-state"><h3>No folders found yet</h3><p>Add a folder (e.g. "Notes") with .html pages inside, and it will show up here automatically.</p></div>';
+        return;
+      }
+
+      tabRow.innerHTML = "";
+      panelHost.innerHTML = "";
+      folders.forEach(function(f, i){
+        var btn = document.createElement("button");
+        btn.className = "tab-btn" + (i === 0 ? " active" : "");
+        btn.id = "tabBtn-" + f;
+        btn.type = "button";
+        btn.innerHTML = (FOLDER_ICON[f] || DEFAULT_ICON) + " " + f + '<span class="count" id="count-' + f + '"></span>';
+        btn.addEventListener("click", function(){ showTab(f, folders); });
+        tabRow.appendChild(btn);
+
+        var panel = document.createElement("div");
+        panel.className = "tab-panel";
+        panel.id = "panel-" + f;
+        panel.hidden = i !== 0;
+        panel.innerHTML = '<div class="item-grid" id="grid-' + f + '"></div>';
+        panelHost.appendChild(panel);
+
+        var cached = readCache(f);
+        var grid = document.getElementById("grid-" + f);
+        if(cached){ renderGrid(grid, cached, true); }
+        else{ grid.innerHTML = '<div class="empty-state"><h3>Loading…</h3><p>Fetching pages from the repository.</p></div>'; }
+      });
+
+      folders.forEach(function(f){
+        fetchFiles(f).then(function(files){
+          var grid = document.getElementById("grid-" + f);
+          var countEl = document.getElementById("count-" + f);
+          if(files === null){ renderGrid(grid, [], false); return; }
+          buildItems(f, files).then(function(items){
+            renderGrid(grid, items, true);
+            if(countEl) countEl.textContent = items.length ? "(" + items.length + ")" : "";
+            writeCache(f, items);
+          });
+        });
+      });
+    });
+  }
+  init();
+
+  /* ============ hero notebook ============ */
+  var boardBody = document.getElementById("boardBody");
+  var lines = [
+    { html: '<span class="step">Solve for x:  2x + 5 = 17</span>', cls: "" },
+    { html: '<span class="step">Subtract 5:  2x = 12</span>', cls: "" },
+    { html: '<span class="step">Divide by 2:  x = <span class="ans">6</span></span>', cls: "" }
+  ];
+  lines.forEach(function(l, i){
+    var d = document.createElement("div");
+    d.className = "ln" + (l.cls ? " " + l.cls : "");
+    d.style.animationDelay = (i * 0.5) + "s";
+    d.innerHTML = l.html;
+    boardBody.appendChild(d);
+  });
+})();
+</script>
+</body>
+</html>
