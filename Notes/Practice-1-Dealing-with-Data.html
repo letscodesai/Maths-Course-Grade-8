@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Practice 1 — Dealing with Data</title>
+<style>
+:root{--bg:#f4f6fb;--paper:#fff;--ink:#1d2433;--mute:#5b6478;--acc:#2f5bd8;--line:#c9d0e0;--bar:#2f5bd8;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12151d;--paper:#1b202c;--ink:#e8ecf5;--mute:#98a2b8;--acc:#8fa9ff;--line:#3a4358;--bar:#8fa9ff}}
+:root[data-theme="dark"]{--bg:#12151d;--paper:#1b202c;--ink:#e8ecf5;--mute:#98a2b8;--acc:#8fa9ff;--line:#3a4358;--bar:#8fa9ff}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.page{max-width:780px;margin:0 auto;background:var(--paper);padding:32px 28px 40px}
+.name{display:flex;gap:24px;color:var(--mute);font-size:14px;margin-bottom:8px}
+.name span{flex:1;border-bottom:1px solid var(--line);padding-bottom:2px}
+h1{margin:8px 0 0;font-size:30px;color:var(--acc)}
+.sub{color:var(--mute);margin:0 0 20px}
+h2{font-size:14px;text-transform:uppercase;letter-spacing:.08em;color:var(--acc);border-bottom:2px solid var(--acc);padding-bottom:3px;margin:30px 0 12px}
+.q{margin:16px 0}
+.q>p{margin:0 0 6px}
+.q b.n{display:inline-block;min-width:1.6em}
+.parts{margin:6px 0 0 1.6em;padding:0;list-style:none}
+.parts li{margin:10px 0}
+.parts li>span.l{display:inline-block;min-width:1.7em;color:var(--mute)}
+.data{background:var(--bg);border-left:4px solid var(--acc);padding:8px 12px;border-radius:4px;margin:8px 0 8px 1.6em;font-size:15px}
+table{border-collapse:collapse;margin:8px 0 8px 1.6em}
+th,td{border:1px solid var(--line);padding:6px 14px;text-align:center;min-width:70px}
+th{background:var(--bg)}
+td.fill{min-width:90px;height:32px}
+.ans{border-bottom:1px dotted var(--mute);display:block;height:26px;margin:2px 0 0 1.7em}
+.chart{margin:8px 0 8px 1.6em;max-width:460px}
+svg{width:100%;height:auto;display:block}
+svg text{fill:var(--ink);font-size:12px;font-family:inherit}
+svg .g{stroke:var(--line)}
+.opt td{min-width:0;text-align:left}
+.opt td.c{width:110px;text-align:center}
+.tip{color:var(--mute);font-size:14px}
+@media (max-width:520px){.page{padding:20px 14px}table,.data,.chart{margin-left:0}.parts{margin-left:0}.ans{margin-left:0}}
+@media print{body{background:#fff}.page{padding:0;max-width:none}}
+.banner{text-align:center;margin:34px -28px -40px;padding:10px 28px;background:var(--acc);color:#fff;font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;border-radius:0 0 4px 4px}
+@media (max-width:520px){.banner{margin:34px -14px -20px;padding:10px 14px}}
+</style></head><body>
+<main class="page">
+<div class="name"><span>Name:</span><span>Date:</span><span>Class:</span></div>
+<h1>Practice 1 — Dealing with Data</h1>
+<p class="sub">Representing and Interpreting Data</p>
+
+<h2>Frequency tables and bar charts</h2>
+
+<div class="q"><p><b class="n">1.</b>20 students were asked to name their favourite fruit. The raw data is below.</p>
+<div class="data">Apple, Banana, Mango, Apple, Orange, Mango, Banana, Mango, Apple, Mango, Orange, Banana, Mango, Apple, Mango, Banana, Apple, Mango, Orange, Mango</div>
+<ol class="parts">
+<li><span class="l">(a)</span>Complete the frequency table.
+<table><tr><th>Fruit</th><th>Apple</th><th>Banana</th><th>Mango</th><th>Orange</th><th>Total</th></tr>
+<tr><th>Frequency</th><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr></table></li>
+<li><span class="l">(b)</span>What should the total frequency be? Does your table agree?<span class="ans"></span></li>
+<li><span class="l">(c)</span>Which fruit has the lowest frequency, and how many more students chose mango than that fruit?<span class="ans"></span><span class="ans"></span></li>
+</ol></div>
+
+<div class="q"><p><b class="n">2.</b>Use your table from Question 1.</p>
+<ol class="parts">
+<li><span class="l">(a)</span>Draw a bar chart. Label both axes and give the chart a title.
+<div class="chart" id="blank"></div></li>
+<li><span class="l">(b)</span>How many students did <i>not</i> choose mango? Explain how you can find this from your chart.<span class="ans"></span><span class="ans"></span></li>
+</ol></div>
+
+<h2>Reading a bar chart</h2>
+
+<div class="q"><p><b class="n">3.</b>Students in a class were asked how they travel to school.</p>
+<div class="chart" id="given"></div>
+<ol class="parts">
+<li><span class="l">(a)</span>Which method has the lowest frequency?<span class="ans"></span></li>
+<li><span class="l">(b)</span>How many students were surveyed altogether?<span class="ans"></span></li>
+<li><span class="l">(c)</span>How many more students take the bus than ride a bicycle?<span class="ans"></span></li>
+<li><span class="l">(d)</span>Aarav says, “Walking is the most common way to travel to school.” Do you agree? Use the chart to explain.<span class="ans"></span><span class="ans"></span></li>
+</ol></div>
+
+<h2>Grouped data</h2>
+
+<div class="q"><p><b class="n">4.</b>A youth club has 28 members. Their ages are grouped below.</p>
+<table><tr><th>Age (years)</th><th>10–12</th><th>13–15</th><th>16–18</th></tr>
+<tr><th>Frequency</th><td>8</td><td>14</td><td>6</td></tr></table>
+<ol class="parts">
+<li><span class="l">(a)</span>Meera is in the 13–15 group. Can you say she is exactly 14 years old? Explain.<span class="ans"></span><span class="ans"></span></li>
+<li><span class="l">(b)</span>Can you tell how many members are exactly 17 years old? Give a reason.<span class="ans"></span><span class="ans"></span></li>
+<li><span class="l">(c)</span>Can you tell how many members are younger than 16? If yes, find it. If no, explain why not.<span class="ans"></span><span class="ans"></span></li>
+</ol></div>
+
+<div class="q"><p><b class="n">5.</b>The marks of 30 students in a test (out of 50) are shown in a grouped table.</p>
+<table><tr><th>Marks</th><th>0–10</th><th>11–20</th><th>21–30</th><th>31–40</th><th>41–50</th></tr>
+<tr><th>Frequency</th><td>2</td><td>5</td><td>11</td><td>9</td><td>3</td></tr></table>
+<ol class="parts">
+<li><span class="l">(a)</span>Check that the frequencies add up to the number of students.<span class="ans"></span></li>
+<li><span class="l">(b)</span>Which group has the most students? How many students scored 30 marks or less?<span class="ans"></span><span class="ans"></span></li>
+<li><span class="l">(c)</span>Why do we use groups such as 0–10 and 11–20 instead of listing every mark separately?<span class="ans"></span><span class="ans"></span></li>
+</ol></div>
+
+<h2>What the data tells us</h2>
+
+<div class="q"><p><b class="n">6.</b>Use the test-marks table from Question 5. For each statement, tick <b>True</b>, <b>False</b> or <b>Cannot tell</b>.</p>
+<table class="opt" style="margin-left:1.6em"><tr><th style="text-align:left">Statement</th><th>True</th><th>False</th><th>Cannot tell</th></tr>
+<tr><td>More students scored 21–30 than 11–20.</td><td class="c">☐</td><td class="c">☐</td><td class="c">☐</td></tr>
+<tr><td>Nobody scored full marks (50).</td><td class="c">☐</td><td class="c">☐</td><td class="c">☐</td></tr>
+<tr><td>Exactly 3 students scored more than 40.</td><td class="c">☐</td><td class="c">☐</td><td class="c">☐</td></tr>
+<tr><td>The test was too easy for the class.</td><td class="c">☐</td><td class="c">☐</td><td class="c">☐</td></tr></table>
+<p class="tip" style="margin-left:1.6em">Choose one “Cannot tell” answer and explain in one sentence why the data does not show it.</p>
+<span class="ans"></span><span class="ans"></span></div>
+<p class="banner">Code Craft Club</p>
+</main>
+<script>
+const NS="http://www.w3.org/2000/svg";
+function chart(el,labels,vals,max,blank,ylabel){
+  const W=460,H=280,L=50,B=40,T=16,R=10,pw=W-L-R,ph=H-T-B,s=max>=12?2:1;
+  let h=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${blank?'Blank grid for a bar chart':'Bar chart'}">`;
+  for(let v=0;v<=max;v+=s){const y=T+ph-v/max*ph;
+    h+=`<line class="g" x1="${L}" x2="${W-R}" y1="${y}" y2="${y}"/><text x="${L-8}" y="${y+4}" text-anchor="end">${v}</text>`}
+  h+=`<line stroke="currentColor" class="g" x1="${L}" x2="${L}" y1="${T}" y2="${T+ph}"/>`;
+  const n=blank?4:labels.length,bw=pw/n;
+  for(let i=0;i<n;i++){
+    if(!blank){const bh=vals[i]/max*ph;
+      h+=`<rect x="${L+i*bw+bw*.2}" y="${T+ph-bh}" width="${bw*.6}" height="${bh}" fill="var(--bar)" rx="2"/><text x="${L+i*bw+bw/2}" y="${H-B+18}" text-anchor="middle">${labels[i]}</text>`}
+  }
+  h+=`<text x="${W/2}" y="${H-4}" text-anchor="middle" fill="var(--mute)">${blank?'':'Method of travel'}</text>`;
+  if(ylabel){h+=`<text x="14" y="${T+ph/2}" text-anchor="middle" fill="var(--mute)" transform="rotate(-90 14 ${T+ph/2})">${ylabel}</text>`}
+  h+=`</svg>`;el.innerHTML=h}
+chart(document.getElementById("blank"),[],[],10,true);
+chart(document.getElementById("given"),["Walk","Bicycle","Bus","Car"],[9,6,12,5],12,false,"Number of students");
+</script>
+</body></html>
